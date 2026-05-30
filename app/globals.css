@@ -1,8 +1,47 @@
 @import "tailwindcss";
 
+/* ============================================================
+   GENTELLE DESIGN SYSTEM
+   Luxury skincare — warm porcelain, botanical green, soft gold
+   ============================================================ */
+
 @theme {
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  /* Surfaces */
+  --color-canvas: #FBF9F5;
+  --color-surface: #FFFFFF;
+  --color-sand: #F2ECE1;
+  --color-sand-deep: #EAE0CF;
+
+  /* Brand greens */
+  --color-brand: #2F4A3A;
+  --color-brand-dark: #21372A;
+  --color-brand-deep: #16271D;
+  --color-brand-tint: #E6EDE7;
+
+  /* Gold accent */
+  --color-gold: #A9863F;
+  --color-gold-light: #C8A968;
+  --color-gold-soft: #F0E6D2;
+
+  /* Ink / text */
+  --color-ink: #1C1B19;
+  --color-muted: #6E6A62;
+  --color-faint: #9A958B;
+
+  /* Lines */
+  --color-line: #E7DECF;
+  --color-line-soft: #F0E9DD;
+
+  /* Feedback */
+  --color-success: #3E7A52;
+  --color-danger: #B5483B;
+
+  /* Typography */
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  /* Easing */
+  --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -13,12 +52,16 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: #FAF7F2;
-  color: #1A1A1A;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -28,78 +71,116 @@ a {
 
 button {
   cursor: pointer;
+  font-family: inherit;
 }
 
-:root {
-  --bg: #FAF7F2;
-  --bg-alt: #F0EAE0;
-  --card: #FFFFFF;
-  --primary: #2C4A35;
-  --primary-light: #4A7A58;
-  --accent: #B8963E;
-  --accent-light: #D4AF5A;
-  --text: #1A1A1A;
-  --muted: #6B6B6B;
-  --border: #E4D9CC;
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-brand);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 0.5rem 0;
+  font-size: 0.875rem;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* ===================== Animations ===================== */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 @keyframes shimmer {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
-
-.fade-in-up {
-  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.fade-in {
-  animation: fadeIn 0.6s ease forwards;
-}
-
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-
-.gold-shimmer {
-  background: linear-gradient(
-    90deg,
-    #B8963E 0%,
-    #D4AF5A 40%,
-    #B8963E 60%,
-    #8B6914 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
-}
-
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
-.section-divider {
+.fade-in-up { animation: fadeInUp 0.8s var(--ease-lux) forwards; }
+.fade-in { animation: fadeIn 0.7s ease forwards; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Scroll reveal (paired with IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-lux), transform 0.9s var(--ease-lux);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold shimmer text */
+.gold-shimmer {
+  background: linear-gradient(90deg, #A9863F 0%, #D8BE85 45%, #A9863F 60%, #826322 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+/* Decorative hairline divider */
+.divider-gold {
   width: 48px;
   height: 1px;
-  background: #B8963E;
-  margin: 0 auto;
+  background: var(--color-gold);
+}
+.divider-gold.center { margin-inline: auto; }
+
+/* Eyebrow label */
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+/* Subtle paper grain on dark sections */
+.grain-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 4px 4px;
 }
