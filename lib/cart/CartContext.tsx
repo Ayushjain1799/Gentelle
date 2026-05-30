@@ -98,6 +98,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     } catch {
       /* ignore malformed storage */
     }
+    // Intentional: cart is hydrated from localStorage only after mount to
+    // avoid an SSR/CSR mismatch (server has no access to localStorage).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHydrated(true);
   }, []);
 
