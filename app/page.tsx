@@ -1,387 +1,331 @@
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import ProductCard from "@/components/product/ProductCard";
+import ProductMedia from "@/components/product/ProductMedia";
+import AddToCart from "@/components/product/AddToCart";
+import { LeafIcon, ShieldIcon, SparkleIcon, DropletIcon } from "@/components/icons";
+import { getFeaturedProducts, getProduct } from "@/lib/products";
+import { whatsappUrl } from "@/lib/config";
 
-const trustItems = [
-  "Clean Ingredients",
-  "Dermatologist Tested",
-  "Cruelty Free",
-  "Made in India",
-];
-
-const featuredProducts = [
-  {
-    name: "Gold Face Wash",
-    tagline: "Gentle foaming cleanser with 24K gold extract",
-    price: "₹399",
-    image: "/products/gold.png",
-    badge: "Best Seller",
-  },
-  {
-    name: "Hydrating Serum",
-    tagline: "Lightweight hyaluronic serum for all-day glow",
-    price: "₹899",
-    image: "/products/serum.png",
-    badge: "New Launch",
-  },
-  {
-    name: "Night Repair Cream",
-    tagline: "Deep nourishment while your skin regenerates",
-    price: "₹1,299",
-    image: "/products/gold.png",
-    badge: null,
-  },
-];
+const trust = ["Clean Ingredients", "Dermatologist Tested", "Cruelty Free", "Made in India"];
 
 const pillars = [
-  {
-    icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="20" cy="20" r="16" />
-        <path d="M14 20c0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6" strokeLinecap="round" />
-        <circle cx="20" cy="20" r="2" fill="currentColor" />
-      </svg>
-    ),
-    title: "Clean Science",
-    body: "Every formula is backed by cosmetic science — no fillers, no compromise.",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8" stroke="currentColor" strokeWidth="1.5">
-        <path d="M20 8c0 0-10 8-10 16a10 10 0 0020 0C30 16 20 8 20 8z" />
-        <path d="M20 22v-6" strokeLinecap="round" />
-        <circle cx="20" cy="24" r="1.5" fill="currentColor" />
-      </svg>
-    ),
-    title: "Skin First",
-    body: "Formulated for the Indian climate — humidity, pollution, and all.",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8" stroke="currentColor" strokeWidth="1.5">
-        <rect x="8" y="14" width="24" height="18" rx="3" />
-        <path d="M14 14V11a6 6 0 0112 0v3" strokeLinecap="round" />
-        <circle cx="20" cy="23" r="2.5" />
-        <path d="M20 25.5v2.5" strokeLinecap="round" />
-      </svg>
-    ),
-    title: "Transparent",
-    body: "Full ingredient lists. No hidden actives, no misleading claims.",
-  },
+  { icon: LeafIcon, title: "Clean Science", body: "Backed by cosmetic science — no fillers, no compromise." },
+  { icon: ShieldIcon, title: "Barrier First", body: "Formulated to protect and strengthen your skin barrier." },
+  { icon: DropletIcon, title: "Climate-Tuned", body: "Built for Indian humidity, pollution and everyday wear." },
+  { icon: SparkleIcon, title: "Transparent", body: "Full ingredient lists. Honest claims. Real results." },
+];
+
+const ingredients = [
+  { name: "24K Gold", role: "Radiance & luminosity" },
+  { name: "Hyaluronic Acid", role: "Deep, lasting hydration" },
+  { name: "Niacinamide", role: "Clarity & even tone" },
+  { name: "Ceramides", role: "Barrier repair" },
+  { name: "Bakuchiol", role: "Gentle smoothing" },
+  { name: "Aloe Vera", role: "Calm & soothe" },
 ];
 
 const testimonials = [
-  {
-    quote:
-      "The Gold Face Wash is unlike anything I've tried. My skin feels clean but never stripped — it actually glows.",
-    name: "Priya M.",
-    location: "Mumbai",
-  },
-  {
-    quote:
-      "I was skeptical about the serum price but after two weeks my dark spots visibly faded. Worth every rupee.",
-    name: "Ananya S.",
-    location: "Bengaluru",
-  },
-  {
-    quote:
-      "Gentelle feels like a luxury European brand but made for Indian skin. The packaging alone is stunning.",
-    name: "Riya K.",
-    location: "Delhi",
-  },
+  { quote: "My skin feels clean but never stripped — it actually glows. Nothing else compares.", name: "Priya M.", location: "Mumbai" },
+  { quote: "After two weeks my dark spots visibly faded. Worth every rupee.", name: "Ananya S.", location: "Bengaluru" },
+  { quote: "Feels like a luxury European brand, but made for Indian skin. The packaging alone is stunning.", name: "Riya K.", location: "Delhi" },
 ];
 
 export default function Home() {
+  const featured = getFeaturedProducts();
+  const hero = getProduct("gold-face-wash")!;
+
   return (
-    <main>
-      {/* ── HERO ────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center bg-[#FAF7F2] overflow-hidden">
-        {/* Decorative background shape */}
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-[#F0EAE0] -skew-x-6 translate-x-12 hidden lg:block" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-16 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Text */}
-            <div>
-              <p className="fade-in-up text-xs uppercase tracking-[0.4em] text-[#B8963E] font-medium mb-6">
-                Luxury Skincare · Est. 2024
-              </p>
-
-              <h1 className="fade-in-up delay-100 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold text-[#1A1A1A] leading-[1.1] tracking-tight">
-                Gentle Care.
-                <br />
-                <span className="gold-shimmer">Elevated</span>
-                <br />
-                Ritual.
-              </h1>
-
-              <p className="fade-in-up delay-200 mt-8 text-base md:text-lg text-[#6B6B6B] leading-relaxed max-w-md">
-                Premium skincare crafted for modern lifestyles. Thoughtfully formulated
-                with clean actives that blend elegance, science, and everyday care.
-              </p>
-
-              <div className="fade-in-up delay-300 flex flex-wrap gap-4 mt-10">
-                <Link href="/products">
-                  <button className="bg-[#2C4A35] text-white text-sm tracking-widest px-8 py-4 rounded-full hover:bg-[#B8963E] transition-colors duration-300">
-                    Explore Collection
-                  </button>
-                </Link>
-                <Link href="/about">
-                  <button className="border border-[#2C4A35] text-[#2C4A35] text-sm tracking-widest px-8 py-4 rounded-full hover:bg-[#2C4A35] hover:text-white transition-all duration-300">
-                    Our Story
-                  </button>
-                </Link>
-              </div>
-
-              {/* Trust badges */}
-              <div className="fade-in-up delay-400 flex flex-wrap gap-6 mt-14">
-                {trustItems.map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-xs text-[#6B6B6B] tracking-wide">
-                    <span className="w-1 h-1 rounded-full bg-[#B8963E] inline-block" />
-                    {item}
-                  </div>
-                ))}
-              </div>
+    <>
+      {/* ───────────── HERO ───────────── */}
+      <section className="relative overflow-hidden bg-canvas">
+        <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 bg-sand/60 lg:block [clip-path:polygon(22%_0,100%_0,100%_100%,4%_100%)]" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-36 lg:grid-cols-2">
+          <div>
+            <p className="eyebrow fade-in-up">Luxury Skincare · Est. 2024</p>
+            <h1 className="fade-in-up delay-100 mt-6 font-serif text-5xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+              Gentle Care.
+              <br />
+              <span className="gold-shimmer">Elevated</span> Ritual.
+            </h1>
+            <p className="fade-in-up delay-200 mt-7 max-w-md text-base leading-relaxed text-muted md:text-lg">
+              Premium skincare crafted for modern lifestyles — clean actives that blend elegance,
+              science and everyday care.
+            </p>
+            <div className="fade-in-up delay-300 mt-9 flex flex-wrap gap-4">
+              <Link
+                href="/products"
+                className="rounded-full bg-brand px-8 py-4 text-sm tracking-widest text-white transition-colors duration-300 hover:bg-gold"
+              >
+                Explore Collection
+              </Link>
+              <Link
+                href="/about"
+                className="rounded-full border border-brand px-8 py-4 text-sm tracking-widest text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+              >
+                Our Story
+              </Link>
             </div>
+            <div className="fade-in-up delay-400 mt-12 flex flex-wrap gap-x-6 gap-y-3">
+              {trust.map((t) => (
+                <span key={t} className="flex items-center gap-2 text-xs tracking-wide text-muted">
+                  <span className="h-1 w-1 rounded-full bg-gold" />
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
 
-            {/* Image */}
-            <div className="fade-in flex justify-center relative">
-              <div className="absolute inset-0 bg-[#B8963E]/5 rounded-[40px] blur-3xl scale-90" />
-              <Image
-                src="/products/mainpage.png"
-                alt="Gentelle luxury skincare hero product"
-                width={580}
-                height={580}
-                priority
-                sizes="(max-width: 768px) 90vw, 50vw"
-                className="relative object-contain drop-shadow-2xl"
+          <div className="fade-in relative flex justify-center">
+            <div className="relative w-full max-w-md">
+              <div
+                className="absolute inset-0 -z-10 rounded-[2.5rem] blur-3xl"
+                style={{ background: "radial-gradient(circle at 60% 40%, rgba(200,169,104,0.35), transparent 70%)" }}
+                aria-hidden
               />
+              <div className="overflow-hidden rounded-[2.5rem] border border-line bg-gradient-to-br from-sand to-surface p-8">
+                <Image
+                  src="/products/mainpage.png"
+                  alt="Gentelle luxury skincare collection"
+                  width={600}
+                  height={600}
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 45vw"
+                  className="h-auto w-full object-contain drop-shadow-2xl"
+                />
+              </div>
+              <div className="absolute -bottom-5 -left-3 rounded-2xl border border-line bg-surface/95 px-5 py-3 shadow-lg backdrop-blur sm:-left-6">
+                <p className="text-[10px] uppercase tracking-widest text-gold">Best Seller</p>
+                <p className="font-serif text-sm font-semibold text-ink">Gold Face Wash · ₹399</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── MARQUEE TRUST BAR ───────────────────────────────────── */}
-      <div className="bg-[#2C4A35] py-4 overflow-hidden">
-        <div className="flex gap-16 animate-[marquee_20s_linear_infinite] whitespace-nowrap">
-          {[...Array(4)].flatMap(() => trustItems).map((item, i) => (
-            <span key={i} className="text-xs tracking-[0.35em] text-[#D4AF5A] uppercase shrink-0">
-              {item} &nbsp;·
+      {/* ───────────── TRUST MARQUEE ───────────── */}
+      <div className="overflow-hidden border-y border-line bg-brand py-4">
+        <div className="flex w-max gap-12 [animation:marquee_24s_linear_infinite]">
+          {Array.from({ length: 6 }).flatMap(() => trust).map((t, i) => (
+            <span key={i} className="text-xs uppercase tracking-[0.35em] text-gold-light">
+              {t} &nbsp;·
             </span>
           ))}
         </div>
       </div>
 
-      {/* ── FEATURED PRODUCTS ───────────────────────────────────── */}
-      <section className="py-28 bg-[#FAF7F2]">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.4em] text-[#B8963E] mb-4">
-              Featured Collection
-            </p>
-            <h2 className="font-serif text-4xl md:text-5xl font-semibold text-[#1A1A1A]">
-              Discover Our Essentials
+      {/* ───────────── BESTSELLER SPOTLIGHT ───────────── */}
+      <section className="bg-canvas py-20 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-10 lg:grid-cols-2">
+          <Reveal>
+            <ProductMedia product={hero} priority sizes="(max-width: 1024px) 90vw, 45vw" />
+          </Reveal>
+          <Reveal delay={120}>
+            <p className="eyebrow">The Hero Product</p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">
+              {hero.name}
             </h2>
-            <div className="section-divider mt-6" />
-          </div>
+            <div className="divider-gold mt-5" />
+            <p className="mt-6 text-base leading-8 text-muted">{hero.description}</p>
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+              {hero.benefits.map((b) => (
+                <li key={b} className="flex items-start gap-2.5 text-sm text-ink">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex items-center gap-5">
+              <span className="font-serif text-3xl font-semibold text-brand">{hero.priceLabel}</span>
+              <span className="text-xs text-faint">Taxes included · Free shipping over ₹499</span>
+            </div>
+            <div className="mt-7">
+              <AddToCart productId={hero.id} />
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {featuredProducts.map((product) => (
-              <Link
-                key={product.name}
-                href={`/products/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
-                className="group"
-              >
-                <div className="bg-white rounded-3xl overflow-hidden border border-[#E4D9CC] hover:border-[#B8963E] hover:shadow-[0_8px_40px_rgba(184,150,62,0.12)] transition-all duration-500">
-                  {/* Image area */}
-                  <div className="relative bg-[#F0EAE0] p-8">
-                    {product.badge && (
-                      <span className="absolute top-4 left-4 text-[10px] tracking-widest uppercase bg-[#2C4A35] text-white px-3 py-1 rounded-full">
-                        {product.badge}
-                      </span>
-                    )}
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      width={400}
-                      height={400}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="w-full h-56 object-contain group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-
-                  {/* Info */}
-                  <div className="p-6">
-                    <h3 className="font-serif text-xl font-semibold text-[#1A1A1A]">
-                      {product.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-[#6B6B6B] leading-relaxed">
-                      {product.tagline}
-                    </p>
-                    <div className="mt-5 flex items-center justify-between">
-                      <span className="font-serif text-lg font-semibold text-[#2C4A35]">
-                        {product.price}
-                      </span>
-                      <span className="text-xs tracking-widest text-[#B8963E] group-hover:translate-x-1 transition-transform duration-300">
-                        View →
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+      {/* ───────────── FEATURED COLLECTION ───────────── */}
+      <section className="bg-sand/40 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <Reveal className="text-center">
+            <p className="eyebrow">Featured Collection</p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">
+              Discover Your Ritual
+            </h2>
+            <div className="divider-gold center mt-6" />
+          </Reveal>
+          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((p, i) => (
+              <Reveal key={p.id} delay={i * 80}>
+                <ProductCard product={p} priority={i === 0} />
+              </Reveal>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <Link href="/products">
-              <button className="border border-[#2C4A35] text-[#2C4A35] text-sm tracking-widest px-8 py-3.5 rounded-full hover:bg-[#2C4A35] hover:text-white transition-all duration-300">
-                View All Products
-              </button>
+          <div className="mt-12 text-center">
+            <Link
+              href="/products"
+              className="rounded-full border border-brand px-8 py-3.5 text-sm tracking-widest text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+            >
+              View All Products
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── THREE PILLARS ───────────────────────────────────────── */}
-      <section className="py-28 bg-[#F0EAE0]">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.4em] text-[#B8963E] mb-4">
-              Why Gentelle
+      {/* ───────────── INGREDIENTS ───────────── */}
+      <section className="bg-canvas py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <Reveal className="text-center">
+            <p className="eyebrow">Clean by Design</p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">
+              Ingredients That Earn Their Place
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-muted">
+              No fillers, no guesswork. Every active is chosen for what it does for your skin.
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl font-semibold text-[#1A1A1A]">
+          </Reveal>
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {ingredients.map((ing, i) => (
+              <Reveal key={ing.name} delay={i * 60}>
+                <div className="flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-gold/50">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-tint text-brand">
+                    <LeafIcon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="font-serif text-base font-semibold text-ink">{ing.name}</p>
+                    <p className="text-sm text-muted">{ing.role}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────── BENEFITS / PILLARS ───────────── */}
+      <section className="bg-sand/40 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <Reveal className="text-center">
+            <p className="eyebrow">Why Gentelle</p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">
               Skincare with Integrity
             </h2>
-            <div className="section-divider mt-6" />
-          </div>
-
-          <div className="grid sm:grid-cols-3 gap-8">
-            {pillars.map((p) => (
-              <div
-                key={p.title}
-                className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-[#E4D9CC] hover:bg-white hover:shadow-lg transition-all duration-500"
-              >
-                <div className="text-[#2C4A35] mb-6">{p.icon}</div>
-                <h3 className="font-serif text-xl font-semibold text-[#1A1A1A] mb-3">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-[#6B6B6B] leading-relaxed">{p.body}</p>
-              </div>
+            <div className="divider-gold center mt-6" />
+          </Reveal>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {pillars.map((p, i) => (
+              <Reveal key={p.title} delay={i * 80}>
+                <div className="h-full rounded-3xl border border-line bg-surface p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-tint text-brand">
+                    <p.icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-6 font-serif text-xl font-semibold text-ink">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── PHILOSOPHY SPLIT ────────────────────────────────────── */}
-      <section className="py-28 bg-[#FAF7F2]">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Image side */}
-            <div className="relative">
-              <div className="absolute -top-6 -left-6 w-48 h-48 rounded-full bg-[#B8963E]/8 blur-3xl" />
+      {/* ───────────── BRAND STORY ───────────── */}
+      <section className="bg-canvas py-20 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-10 lg:grid-cols-2">
+          <Reveal className="relative">
+            <div className="overflow-hidden rounded-[2.5rem] border border-line bg-gradient-to-br from-brand-tint to-surface p-10">
               <Image
                 src="/products/serum.png"
-                alt="Gentelle serum — clean formulation philosophy"
+                alt="Gentelle formulation philosophy"
                 width={560}
                 height={560}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="relative object-contain w-full drop-shadow-xl"
+                sizes="(max-width: 1024px) 90vw, 45vw"
+                className="h-auto w-full object-contain drop-shadow-xl"
               />
             </div>
-
-            {/* Text side */}
-            <div>
-              <p className="text-xs uppercase tracking-[0.4em] text-[#B8963E] mb-6">
-                Our Philosophy
-              </p>
-              <h2 className="font-serif text-4xl md:text-5xl font-semibold text-[#1A1A1A] leading-tight mb-8">
-                Beauty Through
-                <br />
-                Simplicity
-              </h2>
-              <div className="w-12 h-px bg-[#B8963E] mb-8" />
-              <p className="text-base text-[#6B6B6B] leading-8 mb-6">
-                Gentelle was born from a belief that great skin doesn&apos;t need a
-                cabinet full of products. It needs the right ones — carefully formulated,
-                honestly made.
-              </p>
-              <p className="text-base text-[#6B6B6B] leading-8">
-                We obsess over every ingredient, every texture, every moment your skin
-                comes into contact with ours. That obsession is what makes Gentelle different.
-              </p>
-
-              <Link href="/about" className="inline-block mt-10">
-                <button className="bg-[#2C4A35] text-white text-sm tracking-widest px-8 py-4 rounded-full hover:bg-[#B8963E] transition-colors duration-300">
-                  Read Our Story
-                </button>
-              </Link>
-            </div>
-          </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <p className="eyebrow">Our Philosophy</p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-ink md:text-5xl">
+              Beauty Through Simplicity
+            </h2>
+            <div className="divider-gold mt-6" />
+            <p className="mt-6 text-base leading-8 text-muted">
+              Gentelle was born from a belief that great skin doesn&apos;t need a cabinet full of
+              products — it needs the right ones, carefully formulated and honestly made.
+            </p>
+            <p className="mt-4 text-base leading-8 text-muted">
+              We obsess over every ingredient, texture and moment your skin meets ours. That
+              obsession is what makes Gentelle different.
+            </p>
+            <Link
+              href="/about"
+              className="mt-9 inline-block rounded-full bg-brand px-8 py-4 text-sm tracking-widest text-white transition-colors duration-300 hover:bg-gold"
+            >
+              Read Our Story
+            </Link>
+          </Reveal>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ────────────────────────────────────────── */}
-      <section className="py-28 bg-[#2C4A35]">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.4em] text-[#D4AF5A] mb-4">
-              What They Say
-            </p>
-            <h2 className="font-serif text-4xl md:text-5xl font-semibold text-white">
+      {/* ───────────── TESTIMONIALS ───────────── */}
+      <section className="grain-dark bg-brand py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <Reveal className="text-center">
+            <p className="eyebrow text-gold-light">What They Say</p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold text-white md:text-5xl">
               Loved by Real Skin
             </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white/8 border border-white/10 rounded-3xl p-8 hover:bg-white/12 transition-all duration-500"
-              >
-                <p className="text-[#D4AF5A] text-2xl font-serif mb-4">&ldquo;</p>
-                <p className="text-[#E8E0D5] text-sm leading-7">{t.quote}</p>
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <p className="text-white font-medium text-sm">{t.name}</p>
-                  <p className="text-[#9DB8A0] text-xs mt-1">{t.location}</p>
-                </div>
-              </div>
+          </Reveal>
+          <div className="mt-14 grid gap-6 sm:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} delay={i * 90}>
+                <figure className="h-full rounded-3xl border border-white/10 bg-white/5 p-8">
+                  <div className="font-serif text-3xl leading-none text-gold-light">&ldquo;</div>
+                  <blockquote className="mt-3 text-sm leading-7 text-white/85">{t.quote}</blockquote>
+                  <figcaption className="mt-6 border-t border-white/10 pt-5">
+                    <p className="text-sm font-medium text-white">{t.name}</p>
+                    <p className="mt-0.5 text-xs text-white/50">{t.location}</p>
+                  </figcaption>
+                </figure>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── FINAL CTA ───────────────────────────────────────────── */}
-      <section className="py-32 bg-[#F0EAE0]">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs uppercase tracking-[0.4em] text-[#B8963E] mb-6">
-            Begin Your Ritual
-          </p>
-          <h2 className="font-serif text-4xl md:text-6xl font-semibold text-[#1A1A1A] leading-tight mb-8">
-            Your Skin Deserves
-            <br />
-            the Best
-          </h2>
-          <p className="text-base text-[#6B6B6B] leading-relaxed mb-12 max-w-xl mx-auto">
-            Explore our collection of premium skincare designed to elevate every step
-            of your daily ritual.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/products">
-              <button className="bg-[#2C4A35] text-white text-sm tracking-widest px-10 py-4 rounded-full hover:bg-[#B8963E] transition-colors duration-300">
+      {/* ───────────── FINAL CTA ───────────── */}
+      <section className="bg-sand py-24 md:py-32">
+        <div className="mx-auto max-w-3xl px-5 text-center">
+          <Reveal>
+            <p className="eyebrow">Begin Your Ritual</p>
+            <h2 className="mt-5 font-serif text-4xl font-semibold leading-tight text-ink md:text-6xl">
+              Your Skin Deserves the Best
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
+              Explore premium skincare designed to elevate every step of your daily ritual.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Link
+                href="/products"
+                className="rounded-full bg-brand px-10 py-4 text-sm tracking-widest text-white transition-colors duration-300 hover:bg-gold"
+              >
                 Shop the Collection
-              </button>
-            </Link>
-            <a
-              href="https://wa.me/917509400769"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="border border-[#2C4A35] text-[#2C4A35] text-sm tracking-widest px-10 py-4 rounded-full hover:bg-[#2C4A35] hover:text-white transition-all duration-300">
+              </Link>
+              <a
+                href={whatsappUrl("Hi Gentelle, I'd like some skincare advice.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-brand px-10 py-4 text-sm tracking-widest text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+              >
                 Get Advice on WhatsApp
-              </button>
-            </a>
-          </div>
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
-    </main>
+    </>
   );
 }
