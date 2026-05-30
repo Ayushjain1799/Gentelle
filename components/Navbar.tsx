@@ -2,11 +2,14 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import CartButton from "@/components/cart/CartButton";
+import { InstagramIcon } from "@/components/icons";
+import { instagramUrl } from "@/lib/config";
 
 const links = [
   { href: "/", label: "Home" },
+  { href: "/products", label: "Shop" },
   { href: "/about", label: "About" },
-  { href: "/products", label: "Products" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -15,121 +18,116 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock scroll while the mobile drawer is open.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#FAF7F2]/95 backdrop-blur-xl shadow-[0_1px_0_#E4D9CC]"
+            ? "bg-canvas/90 shadow-[0_1px_0_var(--color-line)] backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-10">
+          {/* Mobile: hamburger */}
+          <button
+            type="button"
+            className="flex flex-col gap-1.5 p-2 md:hidden"
+            onClick={() => setOpen((o) => !o)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            <span className={`block h-px w-6 bg-brand transition-all duration-300 ${open ? "translate-y-[6px] rotate-45" : ""}`} />
+            <span className={`block h-px w-6 bg-brand transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+            <span className={`block h-px w-6 bg-brand transition-all duration-300 ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
+          </button>
+
           {/* Logo */}
           <Link
             href="/"
-            className="font-serif text-xl tracking-[0.3em] text-[#2C4A35] font-semibold"
+            className="font-serif text-lg font-semibold tracking-[0.3em] text-brand md:text-xl"
           >
             GENTELLE
           </Link>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-10 text-sm tracking-wide text-[#2C4A35]">
+          {/* Desktop nav */}
+          <div className="hidden items-center gap-10 text-sm tracking-wide text-brand md:flex">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="relative group py-1 font-medium hover:text-[#B8963E] transition-colors duration-300"
+                className="group relative py-1 font-medium transition-colors duration-300 hover:text-gold"
               >
                 {l.label}
-                <span className="absolute bottom-0 left-0 w-0 h-px bg-[#B8963E] group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>
 
-          {/* CTA + hamburger */}
-          <div className="flex items-center gap-4">
-            <Link href="/products" className="hidden md:block">
-              <button className="bg-[#2C4A35] text-white text-sm tracking-widest px-6 py-2.5 rounded-full hover:bg-[#B8963E] transition-colors duration-300">
-                Shop Now
-              </button>
-            </Link>
-
-            {/* Hamburger */}
-            <button
-              className="md:hidden flex flex-col gap-1.5 p-2"
-              onClick={() => setOpen(!open)}
-              aria-label="Toggle menu"
+          {/* Right cluster */}
+          <div className="flex items-center gap-1 md:gap-3">
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Gentelle on Instagram"
+              className="hidden h-10 w-10 place-items-center rounded-full text-brand transition-colors hover:text-gold md:grid"
             >
-              <span
-                className={`block w-6 h-px bg-[#2C4A35] transition-all duration-300 ${
-                  open ? "rotate-45 translate-y-2.5" : ""
-                }`}
-              />
-              <span
-                className={`block w-6 h-px bg-[#2C4A35] transition-all duration-300 ${
-                  open ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`block w-6 h-px bg-[#2C4A35] transition-all duration-300 ${
-                  open ? "-rotate-45 -translate-y-2.5" : ""
-                }`}
-              />
-            </button>
+              <InstagramIcon className="h-5 w-5" />
+            </a>
+            <CartButton />
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 z-40 transition-all duration-500 md:hidden ${
-          open ? "pointer-events-auto" : "pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 md:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
       >
-        {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-500 ${
+          onClick={() => setOpen(false)}
+          className={`absolute inset-0 bg-ink/30 backdrop-blur-sm transition-opacity duration-500 ${
             open ? "opacity-100" : "opacity-0"
           }`}
-          onClick={() => setOpen(false)}
         />
-
-        {/* Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-72 bg-[#FAF7F2] shadow-2xl flex flex-col pt-24 px-8 transition-transform duration-500 ${
-            open ? "translate-x-0" : "translate-x-full"
+          className={`absolute left-0 top-0 flex h-full w-72 flex-col bg-canvas px-8 pt-24 shadow-2xl transition-transform duration-500 ${
+            open ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <nav className="flex flex-col gap-8">
+          <nav className="flex flex-col gap-7">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-serif text-2xl text-[#2C4A35] hover:text-[#B8963E] transition-colors duration-300"
+                className="font-serif text-2xl text-brand transition-colors hover:text-gold"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
-
-          <div className="mt-12">
-            <Link href="/products" onClick={() => setOpen(false)}>
-              <button className="w-full bg-[#2C4A35] text-white tracking-widest py-3 rounded-full hover:bg-[#B8963E] transition-colors duration-300">
-                Shop Now
-              </button>
-            </Link>
-          </div>
-
-          <div className="mt-auto pb-10 text-xs text-[#6B6B6B] tracking-widest">
-            GENTELLE © 2026
-          </div>
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto mb-10 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-gold"
+          >
+            <InstagramIcon className="h-5 w-5" /> @gentelle_skincare
+          </a>
         </div>
       </div>
     </>

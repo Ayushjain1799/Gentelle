@@ -1,113 +1,127 @@
 import Link from "next/link";
+import NewsletterForm from "@/components/NewsletterForm";
+import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { siteConfig, instagramUrl, whatsappUrl } from "@/lib/config";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+const shopLinks = [
+  { href: "/products", label: "All Products" },
+  { href: "/products/gold-face-wash", label: "Gold Face Wash" },
+  { href: "/products/hydrating-serum", label: "Hydrating Serum" },
 ];
 
-const socialLinks = [
-  {
-    label: "Instagram",
-    href: "https://instagram.com/gentelle_skincare",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <rect x="2" y="2" width="20" height="20" rx="5" />
-        <circle cx="12" cy="12" r="5" />
-        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-      </svg>
-    ),
-  },
-  {
-    label: "WhatsApp",
-    href: "https://wa.me/917509400769",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-      </svg>
-    ),
-  },
+const companyLinks = [
+  { href: "/about", label: "Our Story" },
+  { href: "/contact", label: "Contact" },
+  { href: "/products", label: "Ingredients" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A2E22] text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20">
-        <div className="grid md:grid-cols-3 gap-16">
-          {/* Brand */}
+    <footer className="grain-dark bg-brand-deep text-white">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-20">
+        {/* Newsletter band */}
+        <div className="mb-14 grid gap-8 rounded-3xl bg-white/5 p-8 md:grid-cols-2 md:items-center md:p-10">
           <div>
-            <p className="font-serif text-2xl tracking-[0.3em] font-semibold text-white mb-5">
-              GENTELLE
+            <h2 className="font-serif text-2xl font-semibold md:text-3xl">
+              Join the Gentelle ritual
+            </h2>
+            <p className="mt-2 text-sm text-white/70">
+              Early access to launches, skincare notes, and member-only offers.
             </p>
-            <p className="text-sm text-[#9DB8A0] leading-7 max-w-xs">
-              Premium skincare crafted with clean science, timeless elegance, and a
-              deep respect for the skin it touches.
+          </div>
+          <NewsletterForm />
+        </div>
+
+        <div className="grid gap-12 md:grid-cols-4">
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <p className="font-serif text-2xl font-semibold tracking-[0.3em]">GENTELLE</p>
+            <p className="mt-5 max-w-xs text-sm leading-7 text-white/60">
+              Premium skincare crafted with clean science, timeless elegance, and a deep respect
+              for the skin it touches.
             </p>
-            <div className="flex gap-4 mt-8">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="text-[#9DB8A0] hover:text-[#D4AF5A] transition-colors duration-300"
-                >
-                  {s.icon}
-                </a>
-              ))}
+            <div className="mt-6 flex gap-3">
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-gold hover:text-gold-light"
+              >
+                <InstagramIcon className="h-5 w-5" />
+              </a>
+              <a
+                href={whatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-gold hover:text-gold-light"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-[#D4AF5A] mb-6">
-              Navigate
-            </p>
-            <nav className="flex flex-col gap-4">
-              {navLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="text-sm text-[#9DB8A0] hover:text-white transition-colors duration-300"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+          {/* Shop */}
+          <FooterColumn title="Shop" links={shopLinks} />
+          {/* Company */}
+          <FooterColumn title="Company" links={companyLinks} />
 
           {/* Contact */}
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-[#D4AF5A] mb-6">
-              Get in Touch
-            </p>
-            <div className="flex flex-col gap-4 text-sm text-[#9DB8A0]">
-              <a
-                href="mailto:support@gentelle.in"
-                className="hover:text-white transition-colors duration-300"
-              >
-                support@gentelle.in
-              </a>
-              <a
-                href="https://wa.me/917509400769"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors duration-300"
-              >
-                +91 75094 00769
-              </a>
-              <p className="text-[#9DB8A0]">@gentelle_skincare</p>
-            </div>
+            <p className="eyebrow mb-5 text-gold-light">Get in Touch</p>
+            <ul className="space-y-3 text-sm text-white/60">
+              <li>
+                <a
+                  href={`mailto:${siteConfig.name.toLowerCase()}@gentelle.in`}
+                  className="transition-colors hover:text-white"
+                >
+                  support@gentelle.in
+                </a>
+              </li>
+              <li>
+                <a
+                  href={whatsappUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  +91 {siteConfig.whatsappNumber.slice(2, 7)} {siteConfig.whatsappNumber.slice(7)}
+                </a>
+              </li>
+              <li>@{siteConfig.instagramHandle}</li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#5A7A62]">
-          <p>© 2026 Gentelle. All rights reserved.</p>
-          <p className="tracking-wide">Made with care · India</p>
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row">
+          <p>© {new Date().getFullYear()} Gentelle. All rights reserved.</p>
+          <p className="tracking-wide">Crafted with care · India</p>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: { href: string; label: string }[];
+}) {
+  return (
+    <div>
+      <p className="eyebrow mb-5 text-gold-light">{title}</p>
+      <ul className="space-y-3 text-sm text-white/60">
+        {links.map((l) => (
+          <li key={l.href + l.label}>
+            <Link href={l.href} className="transition-colors hover:text-white">
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

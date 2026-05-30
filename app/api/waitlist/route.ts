@@ -27,13 +27,17 @@ export const POST = withErrorHandling(async (req: Request) => {
     return ok({ message: "You're on the list." });
   }
 
-  // Only accept waitlist signups for real products.
-  const product = getProduct(parsed.data.productId);
-  if (!product) return fail("Unknown product", 404);
+  // Accept the general newsletter key, or any real product id.
+  const isNewsletter = parsed.data.productId === "newsletter";
+  const product = isNewsletter ? null : getProduct(parsed.data.productId);
+  if (!isNewsletter && !product) return fail("Unknown product", 404);
+
+  const productId = isNewsletter ? "newsletter" : product!.id;
+  const successName = isNewsletter ? "Gentelle" : product!.name;
 
   const record = {
     email: cleanEmail(parsed.data.email),
-    product_id: product.id,
+    product_id: productId,
   };
 
   const supabase = getSupabaseAdmin();
@@ -53,5 +57,5 @@ export const POST = withErrorHandling(async (req: Request) => {
     });
   }
 
-  return ok({ message: `You're on the list for ${product.name}.` });
+  return ok({ message: `You're on the list for ${successName}.` });
 });
