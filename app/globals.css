@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,9 +16,8 @@ html {
 }
 
 body {
-  background: white;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  background: #FAF7F2;
+  color: #1A1A1A;
   overflow-x: hidden;
 }
 
@@ -25,16 +29,77 @@ a {
 button {
   cursor: pointer;
 }
+
 :root {
-  --bg: #F4F8F2;
+  --bg: #FAF7F2;
+  --bg-alt: #F0EAE0;
   --card: #FFFFFF;
-  --primary: #4F6F52;
-  --primary-dark: #2F4F3A;
-  --text: #1D1D1D;
-  --muted: #5C665D;
+  --primary: #2C4A35;
+  --primary-light: #4A7A58;
+  --accent: #B8963E;
+  --accent-light: #D4AF5A;
+  --text: #1A1A1A;
+  --muted: #6B6B6B;
+  --border: #E4D9CC;
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #B8963E 0%,
+    #D4AF5A 40%,
+    #B8963E 60%,
+    #8B6914 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.section-divider {
+  width: 48px;
+  height: 1px;
+  background: #B8963E;
+  margin: 0 auto;
 }
