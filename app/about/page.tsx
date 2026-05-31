@@ -26,7 +26,7 @@ const stats = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-sand px-5 pb-20 pt-32 text-center md:px-10 md:pt-40">
+      <section style={{ paddingTop: "8rem", paddingBottom: "5rem" }} className="bg-sand text-center">
         <p className="eyebrow">About Gentelle</p>
         <h1 className="mx-auto mt-4 max-w-4xl font-serif text-5xl font-semibold leading-tight text-ink md:text-7xl">
           Luxury Skincare, Crafted With Purpose
@@ -39,7 +39,7 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-canvas py-20 md:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 md:px-10 lg:grid-cols-2">
+        <div className="wrap grid items-center gap-16 lg:grid-cols-2">
           <Reveal>
             <p className="eyebrow">Our Story</p>
             <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-ink md:text-5xl">
@@ -81,7 +81,7 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-sand/40 py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="wrap">
           <Reveal className="text-center">
             <p className="eyebrow">Our Values</p>
             <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">

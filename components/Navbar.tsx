@@ -37,11 +37,11 @@ export default function Navbar() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-canvas/90 shadow-[0_1px_0_var(--color-line)] backdrop-blur-xl"
-            : "bg-transparent"
+            ? "bg-canvas/95 shadow-[0_1px_0_var(--color-line)] backdrop-blur-xl"
+            : "bg-gradient-to-b from-canvas/80 to-transparent backdrop-blur-[2px]"
         }`}
       >
-        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-10">
+        <nav className="wrap flex h-16 items-center justify-between md:h-20">
           {/* Mobile: hamburger */}
           <button
             type="button"

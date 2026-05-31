@@ -17,26 +17,33 @@ const companyLinks = [
 
 export default function Footer() {
   return (
-    <footer className="grain-dark bg-brand-deep text-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-20">
-        {/* Newsletter band */}
-        <div className="mb-14 grid gap-8 rounded-3xl bg-white/5 p-8 md:grid-cols-2 md:items-center md:p-10">
-          <div>
-            <h2 className="font-serif text-2xl font-semibold md:text-3xl">
-              Join the Gentelle ritual
-            </h2>
-            <p className="mt-2 text-sm text-white/70">
-              Early access to launches, skincare notes, and member-only offers.
-            </p>
+    <footer style={{ background: "var(--color-espresso)" }} className="text-white">
+      {/* Newsletter band — warm sand strip */}
+      <div className="border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+        <div className="wrap" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <div className="grid gap-8 rounded-2xl p-8 md:grid-cols-2 md:items-center md:p-10" style={{ background: "var(--color-espresso-mid)" }}>
+            <div>
+              <p className="eyebrow" style={{ color: "var(--color-gold-light)" }}>Join the Ritual</p>
+              <h2 className="mt-3 font-serif text-2xl font-semibold md:text-3xl">
+                Early access to every drop
+              </h2>
+              <p className="mt-2 text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                New launches, skincare notes, and member-only offers — delivered quietly.
+              </p>
+            </div>
+            <NewsletterForm />
           </div>
-          <NewsletterForm />
         </div>
+      </div>
 
+      <div className="wrap" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
-            <p className="font-serif text-2xl font-semibold tracking-[0.3em]">GENTELLE</p>
-            <p className="mt-5 max-w-xs text-sm leading-7 text-white/60">
+            <p className="font-serif text-2xl font-semibold tracking-[0.3em]" style={{ color: "var(--color-gold-light)" }}>
+              GENTELLE
+            </p>
+            <p className="mt-5 max-w-xs text-sm leading-7" style={{ color: "rgba(255,255,255,0.5)" }}>
               Premium skincare crafted with clean science, timeless elegance, and a deep respect
               for the skin it touches.
             </p>
@@ -46,7 +53,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-gold hover:text-gold-light"
+                className="footer-social-icon grid h-10 w-10 place-items-center rounded-full transition-colors"
               >
                 <InstagramIcon className="h-5 w-5" />
               </a>
@@ -55,7 +62,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-gold hover:text-gold-light"
+                className="footer-social-icon grid h-10 w-10 place-items-center rounded-full transition-colors"
               >
                 <WhatsAppIcon className="h-5 w-5" />
               </a>
@@ -69,11 +76,11 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="eyebrow mb-5 text-gold-light">Get in Touch</p>
-            <ul className="space-y-3 text-sm text-white/60">
+            <p className="eyebrow mb-5" style={{ color: "var(--color-gold-light)" }}>Get in Touch</p>
+            <ul className="space-y-3 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
               <li>
                 <a
-                  href={`mailto:${siteConfig.name.toLowerCase()}@gentelle.in`}
+                  href={`mailto:support@gentelle.in`}
                   className="transition-colors hover:text-white"
                 >
                   support@gentelle.in
@@ -94,7 +101,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs sm:flex-row" style={{ borderColor: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.3)" }}>
           <p>© {new Date().getFullYear()} Gentelle. All rights reserved.</p>
           <p className="tracking-wide">Crafted with care · India</p>
         </div>
@@ -112,8 +119,8 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <p className="eyebrow mb-5 text-gold-light">{title}</p>
-      <ul className="space-y-3 text-sm text-white/60">
+      <p className="eyebrow mb-5" style={{ color: "var(--color-gold-light)" }}>{title}</p>
+      <ul className="space-y-3 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
         {links.map((l) => (
           <li key={l.href + l.label}>
             <Link href={l.href} className="transition-colors hover:text-white">

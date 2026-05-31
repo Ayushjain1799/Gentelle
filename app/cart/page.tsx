@@ -9,7 +9,7 @@ export default function CartPage() {
   const { lines, count, subtotalLabel, setQty, remove } = useCart();
 
   return (
-    <div className="mx-auto max-w-5xl px-5 pb-20 pt-28 md:px-10 md:pt-32">
+    <div className="wrap" style={{ maxWidth: "56rem", paddingTop: "7rem", paddingBottom: "5rem" }}>
       <h1 className="font-serif text-4xl font-semibold text-ink md:text-5xl">Your Cart</h1>
       <div className="divider-gold mt-5" />
 

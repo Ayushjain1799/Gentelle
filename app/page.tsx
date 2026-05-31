@@ -40,37 +40,56 @@ export default function Home() {
     <>
       {/* ───────────── HERO ───────────── */}
       <section className="relative overflow-hidden bg-canvas">
-        <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 bg-sand/60 lg:block [clip-path:polygon(22%_0,100%_0,100%_100%,4%_100%)]" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-36 lg:grid-cols-2">
+        <div
+          className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 lg:block"
+          style={{
+            background: "linear-gradient(160deg, var(--color-sand) 0%, var(--color-canvas) 100%)",
+            clipPath: "polygon(22% 0, 100% 0, 100% 100%, 4% 100%)",
+          }}
+          aria-hidden
+        />
+        {/* hero inner — .wrap gives reliable horizontal padding */}
+        <div
+          className="wrap relative grid items-center gap-12 lg:grid-cols-2"
+          style={{ paddingTop: "8rem", paddingBottom: "4rem" }}
+        >
           <div>
             <p className="eyebrow fade-in-up">Luxury Skincare · Est. 2024</p>
-            <h1 className="fade-in-up delay-100 mt-6 font-serif text-5xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+            <h1
+              className="fade-in-up delay-100 font-serif font-semibold leading-[1.08] tracking-tight text-ink"
+              style={{ marginTop: "1.5rem", fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+            >
               Gentle Care.
               <br />
               <span className="gold-shimmer">Elevated</span> Ritual.
             </h1>
-            <p className="fade-in-up delay-200 mt-7 max-w-md text-base leading-relaxed text-muted md:text-lg">
+            <p
+              className="fade-in-up delay-200 text-muted"
+              style={{ marginTop: "1.75rem", maxWidth: "28rem", fontSize: "1.0625rem", lineHeight: 1.75 }}
+            >
               Premium skincare crafted for modern lifestyles — clean actives that blend elegance,
               science and everyday care.
             </p>
-            <div className="fade-in-up delay-300 mt-9 flex flex-wrap gap-4">
+            <div className="fade-in-up delay-300" style={{ marginTop: "2.25rem", display: "flex", flexWrap: "wrap", gap: "1rem" }}>
               <Link
                 href="/products"
-                className="rounded-full bg-brand px-8 py-4 text-sm tracking-widest text-white transition-colors duration-300 hover:bg-gold"
+                className="rounded-full bg-brand text-white transition-colors duration-300 hover:bg-gold"
+                style={{ padding: "1rem 2rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase" }}
               >
                 Explore Collection
               </Link>
               <Link
                 href="/about"
-                className="rounded-full border border-brand px-8 py-4 text-sm tracking-widest text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+                className="rounded-full text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+                style={{ padding: "1rem 2rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase", border: "1px solid var(--color-brand)" }}
               >
                 Our Story
               </Link>
             </div>
-            <div className="fade-in-up delay-400 mt-12 flex flex-wrap gap-x-6 gap-y-3">
+            <div className="fade-in-up delay-400" style={{ marginTop: "3rem", display: "flex", flexWrap: "wrap", gap: "0.75rem 1.5rem" }}>
               {trust.map((t) => (
-                <span key={t} className="flex items-center gap-2 text-xs tracking-wide text-muted">
-                  <span className="h-1 w-1 rounded-full bg-gold" />
+                <span key={t} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", letterSpacing: "0.04em", color: "var(--color-muted)" }}>
+                  <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "var(--color-gold)", flexShrink: 0 }} />
                   {t}
                 </span>
               ))}
@@ -78,13 +97,16 @@ export default function Home() {
           </div>
 
           <div className="fade-in relative flex justify-center">
-            <div className="relative w-full max-w-md">
+            <div className="relative w-full" style={{ maxWidth: "28rem" }}>
               <div
                 className="absolute inset-0 -z-10 rounded-[2.5rem] blur-3xl"
-                style={{ background: "radial-gradient(circle at 60% 40%, rgba(200,169,104,0.35), transparent 70%)" }}
+                style={{ background: "radial-gradient(circle at 60% 40%, rgba(200,169,104,0.3), transparent 70%)" }}
                 aria-hidden
               />
-              <div className="overflow-hidden rounded-[2.5rem] border border-line bg-gradient-to-br from-sand to-surface p-8">
+              <div
+                className="overflow-hidden rounded-[2.5rem]"
+                style={{ border: "1px solid var(--color-line)", background: "linear-gradient(145deg, var(--color-sand) 0%, var(--color-surface) 100%)", padding: "2.5rem" }}
+              >
                 <Image
                   src="/products/mainpage.png"
                   alt="Gentelle luxury skincare collection"
@@ -92,12 +114,24 @@ export default function Home() {
                   height={600}
                   priority
                   sizes="(max-width: 1024px) 90vw, 45vw"
-                  className="h-auto w-full object-contain drop-shadow-2xl"
+                  className="h-auto w-full object-contain"
+                  style={{ filter: "drop-shadow(0 16px 40px rgba(26,25,23,0.18))" }}
                 />
               </div>
-              <div className="absolute -bottom-5 -left-3 rounded-2xl border border-line bg-surface/95 px-5 py-3 shadow-lg backdrop-blur sm:-left-6">
-                <p className="text-[10px] uppercase tracking-widest text-gold">Best Seller</p>
-                <p className="font-serif text-sm font-semibold text-ink">Gold Face Wash · ₹399</p>
+              <div
+                className="absolute rounded-2xl"
+                style={{
+                  bottom: "-1.25rem",
+                  left: "-1rem",
+                  border: "1px solid var(--color-line)",
+                  background: "rgba(255,255,255,0.95)",
+                  padding: "0.75rem 1.25rem",
+                  boxShadow: "0 8px 32px -8px rgba(26,25,23,0.14)",
+                  backdropFilter: "blur(12px)",
+                }}
+              >
+                <p style={{ fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "var(--color-gold)" }}>Best Seller</p>
+                <p className="font-serif" style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--color-ink)" }}>Gold Face Wash · ₹399</p>
               </div>
             </div>
           </div>
@@ -105,10 +139,10 @@ export default function Home() {
       </section>
 
       {/* ───────────── TRUST MARQUEE ───────────── */}
-      <div className="overflow-hidden border-y border-line bg-brand py-4">
-        <div className="flex w-max gap-12 [animation:marquee_24s_linear_infinite]">
+      <div className="overflow-hidden border-y border-line bg-brand" style={{ paddingTop: "1rem", paddingBottom: "1rem" }}>
+        <div style={{ display: "flex", width: "max-content", animation: "marquee 24s linear infinite" }}>
           {Array.from({ length: 6 }).flatMap(() => trust).map((t, i) => (
-            <span key={i} className="text-xs uppercase tracking-[0.35em] text-gold-light">
+            <span key={i} style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.35em", color: "var(--color-gold-light)", marginRight: "3rem", whiteSpace: "nowrap" }}>
               {t} &nbsp;·
             </span>
           ))}
@@ -116,31 +150,31 @@ export default function Home() {
       </div>
 
       {/* ───────────── BESTSELLER SPOTLIGHT ───────────── */}
-      <section className="bg-canvas py-20 md:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-10 lg:grid-cols-2">
+      <section className="bg-canvas" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
+        <div className="wrap grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
             <ProductMedia product={hero} priority sizes="(max-width: 1024px) 90vw, 45vw" />
           </Reveal>
           <Reveal delay={120}>
             <p className="eyebrow">The Hero Product</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">
+            <h2 className="font-serif font-semibold text-ink" style={{ marginTop: "1rem", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
               {hero.name}
             </h2>
-            <div className="divider-gold mt-5" />
-            <p className="mt-6 text-base leading-8 text-muted">{hero.description}</p>
-            <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+            <div className="divider-gold" style={{ marginTop: "1.25rem" }} />
+            <p className="text-muted" style={{ marginTop: "1.5rem", lineHeight: 2, fontSize: "1rem" }}>{hero.description}</p>
+            <ul className="grid gap-3" style={{ marginTop: "1.75rem" }}>
               {hero.benefits.map((b) => (
-                <li key={b} className="flex items-start gap-2.5 text-sm text-ink">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                <li key={b} style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem", fontSize: "0.875rem", color: "var(--color-ink)" }}>
+                  <span style={{ marginTop: "0.4rem", width: "6px", height: "6px", borderRadius: "50%", background: "var(--color-gold)", flexShrink: 0 }} />
                   {b}
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex items-center gap-5">
-              <span className="font-serif text-3xl font-semibold text-brand">{hero.priceLabel}</span>
-              <span className="text-xs text-faint">Taxes included · Free shipping over ₹499</span>
+            <div style={{ marginTop: "2rem", display: "flex", alignItems: "center", gap: "1.25rem" }}>
+              <span className="font-serif font-semibold text-brand" style={{ fontSize: "1.875rem" }}>{hero.priceLabel}</span>
+              <span style={{ fontSize: "0.75rem", color: "var(--color-faint)" }}>Taxes included · Free shipping over ₹499</span>
             </div>
-            <div className="mt-7">
+            <div style={{ marginTop: "1.75rem" }}>
               <AddToCart productId={hero.id} />
             </div>
           </Reveal>
@@ -148,26 +182,27 @@ export default function Home() {
       </section>
 
       {/* ───────────── FEATURED COLLECTION ───────────── */}
-      <section className="bg-sand/40 py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
+      <section style={{ background: "var(--color-sand)", paddingTop: "5rem", paddingBottom: "5rem" }}>
+        <div className="wrap">
           <Reveal className="text-center">
             <p className="eyebrow">Featured Collection</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">
+            <h2 className="font-serif font-semibold text-ink" style={{ marginTop: "1rem", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
               Discover Your Ritual
             </h2>
-            <div className="divider-gold center mt-6" />
+            <div className="divider-gold center" style={{ marginTop: "1.5rem" }} />
           </Reveal>
-          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6" style={{ marginTop: "3.5rem", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))" }}>
             {featured.map((p, i) => (
               <Reveal key={p.id} delay={i * 80}>
                 <ProductCard product={p} priority={i === 0} />
               </Reveal>
             ))}
           </div>
-          <div className="mt-12 text-center">
+          <div className="text-center" style={{ marginTop: "3rem" }}>
             <Link
               href="/products"
-              className="rounded-full border border-brand px-8 py-3.5 text-sm tracking-widest text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+              className="inline-block rounded-full text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+              style={{ padding: "0.875rem 2rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase", border: "1px solid var(--color-brand)" }}
             >
               View All Products
             </Link>
@@ -176,27 +211,33 @@ export default function Home() {
       </section>
 
       {/* ───────────── INGREDIENTS ───────────── */}
-      <section className="bg-canvas py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
+      <section className="bg-canvas" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
+        <div className="wrap">
           <Reveal className="text-center">
             <p className="eyebrow">Clean by Design</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">
+            <h2 className="font-serif font-semibold text-ink" style={{ marginTop: "1rem", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
               Ingredients That Earn Their Place
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-muted">
+            <p className="text-muted" style={{ marginTop: "1.25rem", maxWidth: "36rem", marginInline: "auto", lineHeight: 2 }}>
               No fillers, no guesswork. Every active is chosen for what it does for your skin.
             </p>
           </Reveal>
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4" style={{ marginTop: "3.5rem", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))" }}>
             {ingredients.map((ing, i) => (
               <Reveal key={ing.name} delay={i * 60}>
-                <div className="flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-gold/50">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-tint text-brand">
+                <div
+                  className="flex items-center gap-4 rounded-2xl bg-surface transition-colors"
+                  style={{ padding: "1.25rem", border: "1px solid var(--color-line)" }}
+                >
+                  <span
+                    className="grid shrink-0 place-items-center rounded-full text-brand"
+                    style={{ width: "2.75rem", height: "2.75rem", background: "var(--color-brand-tint)" }}
+                  >
                     <LeafIcon className="h-5 w-5" />
                   </span>
                   <div>
-                    <p className="font-serif text-base font-semibold text-ink">{ing.name}</p>
-                    <p className="text-sm text-muted">{ing.role}</p>
+                    <p className="font-serif font-semibold text-ink" style={{ fontSize: "0.9375rem" }}>{ing.name}</p>
+                    <p style={{ fontSize: "0.8125rem", color: "var(--color-muted)" }}>{ing.role}</p>
                   </div>
                 </div>
               </Reveal>
@@ -206,24 +247,30 @@ export default function Home() {
       </section>
 
       {/* ───────────── BENEFITS / PILLARS ───────────── */}
-      <section className="bg-sand/40 py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
+      <section style={{ background: "var(--color-sand)", paddingTop: "5rem", paddingBottom: "5rem" }}>
+        <div className="wrap">
           <Reveal className="text-center">
             <p className="eyebrow">Why Gentelle</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-ink md:text-5xl">
+            <h2 className="font-serif font-semibold text-ink" style={{ marginTop: "1rem", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
               Skincare with Integrity
             </h2>
-            <div className="divider-gold center mt-6" />
+            <div className="divider-gold center" style={{ marginTop: "1.5rem" }} />
           </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5" style={{ marginTop: "3.5rem", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 220px), 1fr))" }}>
             {pillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 80}>
-                <div className="h-full rounded-3xl border border-line bg-surface p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-tint text-brand">
+                <div
+                  className="h-full rounded-3xl bg-surface transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
+                  style={{ padding: "1.75rem", border: "1px solid var(--color-line)" }}
+                >
+                  <span
+                    className="grid place-items-center rounded-2xl text-brand"
+                    style={{ width: "3rem", height: "3rem", background: "var(--color-brand-tint)" }}
+                  >
                     <p.icon className="h-6 w-6" />
                   </span>
-                  <h3 className="mt-6 font-serif text-xl font-semibold text-ink">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
+                  <h3 className="font-serif font-semibold text-ink" style={{ marginTop: "1.5rem", fontSize: "1.15rem" }}>{p.title}</h3>
+                  <p style={{ marginTop: "0.5rem", fontSize: "0.875rem", lineHeight: 1.7, color: "var(--color-muted)" }}>{p.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -232,37 +279,42 @@ export default function Home() {
       </section>
 
       {/* ───────────── BRAND STORY ───────────── */}
-      <section className="bg-canvas py-20 md:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-10 lg:grid-cols-2">
+      <section className="bg-canvas" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
+        <div className="wrap grid items-center gap-14 lg:grid-cols-2">
           <Reveal className="relative">
-            <div className="overflow-hidden rounded-[2.5rem] border border-line bg-gradient-to-br from-brand-tint to-surface p-10">
+            <div
+              className="overflow-hidden rounded-[2.5rem]"
+              style={{ border: "1px solid var(--color-line)", background: "linear-gradient(145deg, var(--color-brand-tint) 0%, var(--color-surface) 100%)", padding: "2.5rem" }}
+            >
               <Image
                 src="/products/serum.png"
                 alt="Gentelle formulation philosophy"
                 width={560}
                 height={560}
                 sizes="(max-width: 1024px) 90vw, 45vw"
-                className="h-auto w-full object-contain drop-shadow-xl"
+                className="h-auto w-full object-contain"
+                style={{ filter: "drop-shadow(0 12px 32px rgba(26,25,23,0.12))" }}
               />
             </div>
           </Reveal>
           <Reveal delay={120}>
             <p className="eyebrow">Our Philosophy</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-ink md:text-5xl">
+            <h2 className="font-serif font-semibold leading-tight text-ink" style={{ marginTop: "1rem", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
               Beauty Through Simplicity
             </h2>
-            <div className="divider-gold mt-6" />
-            <p className="mt-6 text-base leading-8 text-muted">
+            <div className="divider-gold" style={{ marginTop: "1.5rem" }} />
+            <p className="text-muted" style={{ marginTop: "1.5rem", lineHeight: 2 }}>
               Gentelle was born from a belief that great skin doesn&apos;t need a cabinet full of
               products — it needs the right ones, carefully formulated and honestly made.
             </p>
-            <p className="mt-4 text-base leading-8 text-muted">
+            <p className="text-muted" style={{ marginTop: "1rem", lineHeight: 2 }}>
               We obsess over every ingredient, texture and moment your skin meets ours. That
               obsession is what makes Gentelle different.
             </p>
             <Link
               href="/about"
-              className="mt-9 inline-block rounded-full bg-brand px-8 py-4 text-sm tracking-widest text-white transition-colors duration-300 hover:bg-gold"
+              className="inline-block rounded-full bg-brand text-white transition-colors duration-300 hover:bg-gold"
+              style={{ marginTop: "2.25rem", padding: "1rem 2rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase" }}
             >
               Read Our Story
             </Link>
@@ -271,23 +323,26 @@ export default function Home() {
       </section>
 
       {/* ───────────── TESTIMONIALS ───────────── */}
-      <section className="grain-dark bg-brand py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
+      <section className="grain-dark bg-brand" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
+        <div className="wrap">
           <Reveal className="text-center">
-            <p className="eyebrow text-gold-light">What They Say</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-white md:text-5xl">
+            <p className="eyebrow" style={{ color: "var(--color-gold-light)" }}>What They Say</p>
+            <h2 className="font-serif font-semibold text-white" style={{ marginTop: "1rem", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
               Loved by Real Skin
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-6" style={{ marginTop: "3.5rem", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))" }}>
             {testimonials.map((t, i) => (
               <Reveal key={t.name} delay={i * 90}>
-                <figure className="h-full rounded-3xl border border-white/10 bg-white/5 p-8">
-                  <div className="font-serif text-3xl leading-none text-gold-light">&ldquo;</div>
-                  <blockquote className="mt-3 text-sm leading-7 text-white/85">{t.quote}</blockquote>
-                  <figcaption className="mt-6 border-t border-white/10 pt-5">
-                    <p className="text-sm font-medium text-white">{t.name}</p>
-                    <p className="mt-0.5 text-xs text-white/50">{t.location}</p>
+                <figure
+                  className="h-full rounded-3xl"
+                  style={{ border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.04)", padding: "2rem" }}
+                >
+                  <div className="font-serif text-gold-light" style={{ fontSize: "2rem", lineHeight: 1 }}>&ldquo;</div>
+                  <blockquote style={{ marginTop: "0.75rem", fontSize: "0.875rem", lineHeight: 1.75, color: "rgba(255,255,255,0.82)" }}>{t.quote}</blockquote>
+                  <figcaption style={{ marginTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1.25rem" }}>
+                    <p style={{ fontSize: "0.875rem", fontWeight: 500, color: "#fff" }}>{t.name}</p>
+                    <p style={{ marginTop: "0.125rem", fontSize: "0.75rem", color: "rgba(255,255,255,0.45)" }}>{t.location}</p>
                   </figcaption>
                 </figure>
               </Reveal>
@@ -297,20 +352,21 @@ export default function Home() {
       </section>
 
       {/* ───────────── FINAL CTA ───────────── */}
-      <section className="bg-sand py-24 md:py-32">
-        <div className="mx-auto max-w-3xl px-5 text-center">
+      <section style={{ background: "var(--color-sand-deep)", paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div className="wrap text-center" style={{ maxWidth: "48rem" }}>
           <Reveal>
             <p className="eyebrow">Begin Your Ritual</p>
-            <h2 className="mt-5 font-serif text-4xl font-semibold leading-tight text-ink md:text-6xl">
+            <h2 className="font-serif font-semibold leading-tight text-ink" style={{ marginTop: "1.25rem", fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}>
               Your Skin Deserves the Best
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
+            <p className="text-muted" style={{ marginTop: "1.5rem", maxWidth: "28rem", marginInline: "auto", lineHeight: 1.75 }}>
               Explore premium skincare designed to elevate every step of your daily ritual.
             </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div style={{ marginTop: "2.5rem", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
               <Link
                 href="/products"
-                className="rounded-full bg-brand px-10 py-4 text-sm tracking-widest text-white transition-colors duration-300 hover:bg-gold"
+                className="rounded-full bg-brand text-white transition-colors duration-300 hover:bg-gold"
+                style={{ padding: "1rem 2.5rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase" }}
               >
                 Shop the Collection
               </Link>
@@ -318,7 +374,8 @@ export default function Home() {
                 href={whatsappUrl("Hi Gentelle, I'd like some skincare advice.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-brand px-10 py-4 text-sm tracking-widest text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+                className="rounded-full text-brand transition-all duration-300 hover:bg-brand hover:text-white"
+                style={{ padding: "1rem 2.5rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase", border: "1px solid var(--color-brand)" }}
               >
                 Get Advice on WhatsApp
               </a>
