@@ -16,7 +16,11 @@
   --color-brand: #2F4A3A;
   --color-brand-dark: #21372A;
   --color-brand-deep: #16271D;
-  --color-brand-tint: #E6EDE7;
+  --color-brand-tint: #E8EEE9;
+
+  /* Warm dark (footer) */
+  --color-espresso: #1A1613;
+  --color-espresso-mid: #2A2420;
 
   /* Gold accent */
   --color-gold: #A9863F;
@@ -183,6 +187,16 @@ button {
 .grain-dark {
   background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 4px 4px;
+}
+
+/* Footer social icon */
+.footer-social-icon {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.6);
+}
+.footer-social-icon:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
 }
 
 /* Shared form input */

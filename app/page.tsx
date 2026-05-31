@@ -41,7 +41,7 @@ export default function Home() {
       {/* ───────────── HERO ───────────── */}
       <section className="relative overflow-hidden bg-canvas">
         <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 bg-sand/60 lg:block [clip-path:polygon(22%_0,100%_0,100%_100%,4%_100%)]" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-36 lg:grid-cols-2">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-32 md:px-10 md:pb-24 md:pt-40 lg:grid-cols-2">
           <div>
             <p className="eyebrow fade-in-up">Luxury Skincare · Est. 2024</p>
             <h1 className="fade-in-up delay-100 mt-6 font-serif text-5xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-6xl lg:text-7xl">
