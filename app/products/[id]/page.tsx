@@ -66,7 +66,7 @@ export default async function ProductDetailPage({ params }: Props) {
     <>
       <JsonLd data={jsonLd} />
 
-      <div className="mx-auto max-w-6xl px-5 pb-20 pt-28 md:px-10 md:pt-32">
+      <div className="wrap" style={{ maxWidth: "72rem", paddingTop: "7rem", paddingBottom: "5rem" }}>
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-10 flex items-center gap-2 text-xs text-muted">
           <Link href="/" className="transition-colors hover:text-brand">Home</Link>
@@ -155,7 +155,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
       {/* Related */}
       <section className="bg-sand/40 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="wrap">
           <h2 className="text-center font-serif text-3xl font-semibold text-ink">You May Also Like</h2>
           <div className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {fillRelated.map((p) => (

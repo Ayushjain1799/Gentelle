@@ -40,7 +40,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="bg-sand px-5 pb-16 pt-32 text-center md:px-10 md:pt-40">
+      <section style={{ paddingTop: "8rem", paddingBottom: "4rem" }} className="bg-sand text-center">
         <p className="eyebrow">Contact Us</p>
         <h1 className="mt-4 font-serif text-5xl font-semibold leading-tight text-ink md:text-7xl">
           We&apos;d Love to Hear From You
@@ -51,7 +51,7 @@ export default function ContactPage() {
         </p>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-16 md:px-10 md:py-20">
+      <section className="wrap" style={{ maxWidth: "56rem", paddingTop: "4rem", paddingBottom: "5rem" }}>
         <div className="grid gap-5 sm:grid-cols-3">
           {channels.map((c) => (
             <div
@@ -77,7 +77,7 @@ export default function ContactPage() {
       </section>
 
       <section className="bg-sand/40 py-16 md:py-20">
-        <div className="mx-auto max-w-2xl px-5">
+        <div className="wrap" style={{ maxWidth: "36rem" }}>
           <div className="mb-10 text-center">
             <p className="eyebrow">Direct Message</p>
             <h2 className="mt-3 font-serif text-3xl font-semibold text-ink md:text-4xl">

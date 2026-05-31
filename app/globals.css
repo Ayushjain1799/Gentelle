@@ -2,43 +2,46 @@
 
 /* ============================================================
    GENTELLE DESIGN SYSTEM
-   Luxury skincare — warm porcelain, botanical green, soft gold
+   Warm ivory · Forest green · Burnished gold
    ============================================================ */
 
 @theme {
+  /* Fix Tailwind v4 spacing token so all px-/py-/gap- utilities work */
+  --spacing: 0.25rem;
+
   /* Surfaces */
-  --color-canvas: #FBF9F5;
+  --color-canvas: #FAF8F4;
   --color-surface: #FFFFFF;
-  --color-sand: #F2ECE1;
-  --color-sand-deep: #EAE0CF;
+  --color-sand: #F0EAE0;
+  --color-sand-deep: #E6DDD0;
 
   /* Brand greens */
-  --color-brand: #2F4A3A;
-  --color-brand-dark: #21372A;
-  --color-brand-deep: #16271D;
-  --color-brand-tint: #E8EEE9;
+  --color-brand: #2A4335;
+  --color-brand-dark: #1E3228;
+  --color-brand-deep: #14261C;
+  --color-brand-tint: #E6EEEA;
 
-  /* Warm dark (footer) */
-  --color-espresso: #1A1613;
-  --color-espresso-mid: #2A2420;
+  /* Warm dark (footer / dark sections) */
+  --color-espresso: #181411;
+  --color-espresso-mid: #241F1B;
 
   /* Gold accent */
-  --color-gold: #A9863F;
-  --color-gold-light: #C8A968;
-  --color-gold-soft: #F0E6D2;
+  --color-gold: #A98640;
+  --color-gold-light: #C6A55F;
+  --color-gold-soft: #EEE3CC;
 
   /* Ink / text */
-  --color-ink: #1C1B19;
-  --color-muted: #6E6A62;
-  --color-faint: #9A958B;
+  --color-ink: #1A1917;
+  --color-muted: #6B6760;
+  --color-faint: #98938A;
 
   /* Lines */
-  --color-line: #E7DECF;
-  --color-line-soft: #F0E9DD;
+  --color-line: #E5DDD0;
+  --color-line-soft: #EDE6DA;
 
   /* Feedback */
-  --color-success: #3E7A52;
-  --color-danger: #B5483B;
+  --color-success: #3B7550;
+  --color-danger: #B24438;
 
   /* Typography */
   --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
@@ -113,6 +116,42 @@ button {
   left: 0;
 }
 
+/*
+  Page-width container — uses explicit pixel values so it works
+  regardless of how Tailwind resolves the --spacing token on the
+  production build.
+*/
+.wrap {
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 768px) {
+  .wrap {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Narrower variant for article/form pages */
+.wrap-narrow {
+  width: 100%;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 768px) {
+  .wrap-narrow {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
 /* ===================== Animations ===================== */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -157,7 +196,7 @@ button {
 
 /* Gold shimmer text */
 .gold-shimmer {
-  background: linear-gradient(90deg, #A9863F 0%, #D8BE85 45%, #A9863F 60%, #826322 100%);
+  background: linear-gradient(90deg, #A98640 0%, #D6BC80 45%, #A98640 60%, #7E5F28 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -189,7 +228,7 @@ button {
   background-size: 4px 4px;
 }
 
-/* Footer social icon */
+/* Footer social icon hover */
 .footer-social-icon {
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.6);
@@ -216,5 +255,5 @@ button {
 }
 .form-input:focus {
   border-color: var(--color-brand);
-  box-shadow: 0 0 0 3px rgba(47, 74, 58, 0.08);
+  box-shadow: 0 0 0 3px rgba(42, 67, 53, 0.08);
 }

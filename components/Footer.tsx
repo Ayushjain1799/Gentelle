@@ -20,7 +20,7 @@ export default function Footer() {
     <footer style={{ background: "var(--color-espresso)" }} className="text-white">
       {/* Newsletter band — warm sand strip */}
       <div className="border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-        <div className="mx-auto max-w-7xl px-5 py-12 md:px-10">
+        <div className="wrap" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
           <div className="grid gap-8 rounded-2xl p-8 md:grid-cols-2 md:items-center md:p-10" style={{ background: "var(--color-espresso-mid)" }}>
             <div>
               <p className="eyebrow" style={{ color: "var(--color-gold-light)" }}>Join the Ritual</p>
@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-20">
+      <div className="wrap" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
