@@ -76,7 +76,7 @@ export default function ProductCard({
           <span
             className="absolute left-3 top-3 rounded-full text-white"
             style={{
-              background: "rgba(26,25,23,0.72)",
+              background: "linear-gradient(135deg, #C6A55F 0%, #A98640 100%)",
               backdropFilter: "blur(8px)",
               fontSize: "0.65rem",
               letterSpacing: "0.18em",
