@@ -15,7 +15,7 @@ export const serverEnv = {
   razorpayKeyId: read("NEXT_PUBLIC_RAZORPAY_KEY_ID"),
   razorpayKeySecret: read("RAZORPAY_KEY_SECRET"),
   razorpayWebhookSecret: read("RAZORPAY_WEBHOOK_SECRET"),
-  contactNotifyEmail: read("CONTACT_NOTIFY_EMAIL") || "support@gentelle.in",
+  contactNotifyEmail: read("CONTACT_NOTIFY_EMAIL") || "support@gentelleskincare.com",
 } as const;
 
 /** Whether Supabase persistence is wired up. */
