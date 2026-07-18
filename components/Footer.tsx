@@ -5,7 +5,7 @@ import { siteConfig, instagramUrl, whatsappUrl } from "@/lib/config";
 
 const shopLinks = [
   { href: "/products", label: "All Products" },
-  { href: "/products/gold-face-wash", label: "Gold Face Wash" },
+  { href: "/products/gold-face-wash", label: "Gold Glow Face Wash" },
   { href: "/products/hydrating-serum", label: "Hydrating Serum" },
 ];
 

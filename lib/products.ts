@@ -32,11 +32,11 @@ export type Product = {
 export const products: Product[] = [
   {
     id: "gold-face-wash",
-    name: "Gold Face Wash",
-    tagline: "24K Gold Enriched Cleanser",
-    shortDescription: "Gentle foaming cleanse that leaves skin luminous, never stripped.",
+    name: "Gold Glow Face Wash",
+    tagline: "Radiance Boosting Daily Cleanser",
+    shortDescription: "Everyday cleanse, everyday radiance — glow like gold.",
     description:
-      "A daily foaming cleanser that pairs suspended 24K gold flakes with mild amino-acid surfactants. It lifts away pollution, excess oil and impurities while respecting the skin's moisture barrier — leaving a soft, balanced, visibly luminous finish.",
+      "A radiance-boosting daily cleanser powered by Gold Powder, Niacinamide, Hyaluronic Acid and Vitamin-C. It deep-cleanses away pollution, oil and impurities while brightening skin and boosting its natural glow — 100% vegan, cruelty-free, dermatologically tested and suitable for all skin types.",
     priceLabel: "₹399",
     priceInPaise: 39900,
     image: "/products/gold.png",
@@ -44,16 +44,16 @@ export const products: Product[] = [
     badge: "Best Seller",
     status: "available",
     benefits: [
-      "Removes pollution, oil & impurities",
-      "Respects the skin's natural pH",
-      "24K gold for a luminous finish",
-      "Non-stripping, suitable for daily use",
+      "Deep cleansing — lifts pollution, oil & impurities",
+      "Brightens skin & reduces dullness",
+      "Boosts natural radiant glow",
+      "Hydrated, soft skin — for all skin types",
     ],
     ingredients: [
-      { name: "24K Gold Extract", role: "Radiance & luminosity" },
-      { name: "Amino-Acid Surfactants", role: "Gentle, barrier-safe cleansing" },
-      { name: "Glycerin", role: "Humectant hydration" },
-      { name: "Aloe Vera", role: "Soothing & calming" },
+      { name: "Gold Powder", role: "Boosts natural radiance & healthy glow" },
+      { name: "Niacinamide", role: "Improves skin tone, reduces dullness & blemishes" },
+      { name: "Hyaluronic Acid", role: "Deeply hydrates, keeps skin soft & supple" },
+      { name: "Vitamin-C", role: "Brightens skin & fights dullness" },
     ],
     howToUse: [
       "Massage a small amount onto damp skin.",
