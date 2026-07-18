@@ -89,7 +89,7 @@ const organizationJsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    email: "support@gentelle.in",
+    email: "support@gentelleskincare.com",
     areaServed: "IN",
   },
 };
