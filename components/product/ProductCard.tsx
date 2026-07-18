@@ -29,18 +29,32 @@ export default function ProductCard({
         className="relative block overflow-hidden"
         style={{ background: "linear-gradient(160deg, var(--color-sand) 0%, var(--color-surface) 100%)" }}
       >
-        <div className="flex items-center justify-center" style={{ padding: "2rem", minHeight: "260px" }}>
-          <Image
-            src={product.image}
-            alt={`${product.name}`}
-            width={320}
-            height={320}
-            priority={priority}
-            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-            className="h-auto w-full object-contain transition-transform duration-700 group-hover:scale-105"
-            style={{ maxWidth: "220px", maxHeight: "220px", filter: "drop-shadow(0 8px 24px rgba(26,25,23,0.14))" }}
-          />
-        </div>
+        {product.imageStyle === "scene" ? (
+          <div className="aspect-square w-full">
+            <Image
+              src={product.image}
+              alt={`${product.name}`}
+              width={420}
+              height={420}
+              priority={priority}
+              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+        ) : (
+          <div className="flex items-center justify-center" style={{ padding: "2rem", minHeight: "260px" }}>
+            <Image
+              src={product.image}
+              alt={`${product.name}`}
+              width={320}
+              height={320}
+              priority={priority}
+              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+              className="h-auto w-full object-contain transition-transform duration-700 group-hover:scale-105"
+              style={{ maxWidth: "220px", maxHeight: "220px", filter: "drop-shadow(0 8px 24px rgba(26,25,23,0.14))" }}
+            />
+          </div>
+        )}
 
         {/* Badge — lives inside the overflow-hidden image block */}
         {isAvailable && product.badge && (

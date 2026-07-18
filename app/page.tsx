@@ -71,18 +71,10 @@ export default function Home() {
               science and everyday care.
             </p>
             <div className="fade-in-up delay-300" style={{ marginTop: "2.25rem", display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              <Link
-                href="/products"
-                className="rounded-full bg-brand text-white transition-colors duration-300 hover:bg-gold"
-                style={{ padding: "1rem 2rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase" }}
-              >
+              <Link href="/products" className="btn-primary">
                 Explore Collection
               </Link>
-              <Link
-                href="/about"
-                className="rounded-full text-brand transition-all duration-300 hover:bg-brand hover:text-white"
-                style={{ padding: "1rem 2rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase", border: "1px solid var(--color-brand)" }}
-              >
+              <Link href="/about" className="btn-outline">
                 Our Story
               </Link>
             </div>
@@ -105,17 +97,19 @@ export default function Home() {
               />
               <div
                 className="overflow-hidden rounded-[2.5rem]"
-                style={{ border: "1px solid var(--color-line)", background: "linear-gradient(145deg, var(--color-sand) 0%, var(--color-surface) 100%)", padding: "2.5rem" }}
+                style={{
+                  border: "1px solid var(--color-line)",
+                  boxShadow: "0 40px 90px -40px rgba(26,25,23,0.4)",
+                }}
               >
                 <Image
-                  src="/products/mainpage.png"
-                  alt="Gentelle luxury skincare collection"
-                  width={600}
-                  height={600}
+                  src="/products/gold-glow-styled.png"
+                  alt="Gentelle Gold Glow Face Wash — radiance boosting daily cleanser"
+                  width={627}
+                  height={627}
                   priority
                   sizes="(max-width: 1024px) 90vw, 45vw"
-                  className="h-auto w-full object-contain"
-                  style={{ filter: "drop-shadow(0 16px 40px rgba(26,25,23,0.18))" }}
+                  className="h-auto w-full object-cover"
                 />
               </div>
               <div
@@ -199,11 +193,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center" style={{ marginTop: "3rem" }}>
-            <Link
-              href="/products"
-              className="inline-block rounded-full text-brand transition-all duration-300 hover:bg-brand hover:text-white"
-              style={{ padding: "0.875rem 2rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase", border: "1px solid var(--color-brand)" }}
-            >
+            <Link href="/products" className="btn-outline">
               View All Products
             </Link>
           </div>
@@ -311,11 +301,7 @@ export default function Home() {
               We obsess over every ingredient, texture and moment your skin meets ours. That
               obsession is what makes Gentelle different.
             </p>
-            <Link
-              href="/about"
-              className="inline-block rounded-full bg-brand text-white transition-colors duration-300 hover:bg-gold"
-              style={{ marginTop: "2.25rem", padding: "1rem 2rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase" }}
-            >
+            <Link href="/about" className="btn-primary" style={{ marginTop: "2.25rem" }}>
               Read Our Story
             </Link>
           </Reveal>
@@ -363,19 +349,14 @@ export default function Home() {
               Explore premium skincare designed to elevate every step of your daily ritual.
             </p>
             <div style={{ marginTop: "2.5rem", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
-              <Link
-                href="/products"
-                className="rounded-full bg-brand text-white transition-colors duration-300 hover:bg-gold"
-                style={{ padding: "1rem 2.5rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase" }}
-              >
+              <Link href="/products" className="btn-primary">
                 Shop the Collection
               </Link>
               <a
                 href={whatsappUrl("Hi Gentelle, I'd like some skincare advice.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full text-brand transition-all duration-300 hover:bg-brand hover:text-white"
-                style={{ padding: "1rem 2.5rem", fontSize: "0.8125rem", letterSpacing: "0.16em", textTransform: "uppercase", border: "1px solid var(--color-brand)" }}
+                className="btn-outline"
               >
                 Get Advice on WhatsApp
               </a>

@@ -22,7 +22,13 @@ export default function ProductMedia({
 }) {
   if (product.imageStyle === "scene") {
     return (
-      <div className={`relative overflow-hidden ${rounded} ${className}`}>
+      <div
+        className={`relative overflow-hidden ${rounded} ${className}`}
+        style={{
+          border: "1px solid var(--color-line)",
+          boxShadow: "0 32px 70px -36px rgba(26,25,23,0.35)",
+        }}
+      >
         <Image
           src={product.image}
           alt={`${product.name} — ${product.tagline}`}
