@@ -82,6 +82,7 @@ export const products: Product[] = [
     priceLabel: "₹899",
     priceInPaise: 89900,
     image: "/products/serum.png",
+    imageStyle: "scene",
     accent: "#9FB6C4",
     status: "coming-soon",
     benefits: [
@@ -111,7 +112,8 @@ export const products: Product[] = [
       "A rich yet breathable night cream that works in sync with your skin's overnight repair cycle. Ceramides rebuild the barrier, peptides support firmness, and gentle bakuchiol smooths texture — so you wake to softer, more even-toned skin.",
     priceLabel: "₹1,299",
     priceInPaise: 129900,
-    image: "/products/gold.png",
+    image: "/products/placeholder-night-cream.png",
+    imageStyle: "scene",
     accent: "#B89DB8",
     status: "coming-soon",
     benefits: [
@@ -141,7 +143,8 @@ export const products: Product[] = [
       "A stabilised 15% Vitamin C serum that targets dark spots, dullness and uneven tone. Antioxidant protection by day, visible brightening over four weeks of consistent use.",
     priceLabel: "₹999",
     priceInPaise: 99900,
-    image: "/products/serum.png",
+    image: "/products/placeholder-serum-vitc.png",
+    imageStyle: "scene",
     accent: "#D9A86C",
     status: "coming-soon",
     benefits: [
@@ -171,7 +174,8 @@ export const products: Product[] = [
       "A fast-absorbing daily moisturizer with ceramides and niacinamide that locks in hydration and strengthens the skin barrier without any greasy residue.",
     priceLabel: "₹699",
     priceInPaise: 69900,
-    image: "/products/gold.png",
+    image: "/products/placeholder-moisturizer.png",
+    imageStyle: "scene",
     accent: "#A9C2A0",
     status: "coming-soon",
     benefits: [
@@ -201,7 +205,8 @@ export const products: Product[] = [
       "An alcohol-free rose water toner that rebalances pH, refines the look of pores and preps skin to absorb the rest of your ritual.",
     priceLabel: "₹499",
     priceInPaise: 49900,
-    image: "/products/gold.png",
+    image: "/products/placeholder-toner.png",
+    imageStyle: "scene",
     accent: "#D8A7B0",
     status: "coming-soon",
     benefits: [
@@ -231,7 +236,8 @@ export const products: Product[] = [
       "An invisible, non-greasy SPF 50 PA+++ sunscreen with added blue-light protection — built for daily urban exposure and the Indian climate.",
     priceLabel: "₹599",
     priceInPaise: 59900,
-    image: "/products/gold.png",
+    image: "/products/placeholder-sunscreen.png",
+    imageStyle: "scene",
     accent: "#E2C36A",
     status: "coming-soon",
     benefits: [
@@ -261,7 +267,8 @@ export const products: Product[] = [
       "A cooling caffeine and peptide eye cream that visibly reduces puffiness, dark circles and fine lines around the delicate eye area.",
     priceLabel: "₹799",
     priceInPaise: 79900,
-    image: "/products/gold.png",
+    image: "/products/placeholder-eye-cream.png",
+    imageStyle: "scene",
     accent: "#9DB8C9",
     status: "coming-soon",
     benefits: [
@@ -291,7 +298,8 @@ export const products: Product[] = [
       "A gentle exfoliating polish that combines smooth jojoba beads with a touch of glycolic acid to sweep away dead cells and reveal brighter, smoother skin.",
     priceLabel: "₹549",
     priceInPaise: 54900,
-    image: "/products/gold.png",
+    image: "/products/placeholder-scrub.png",
+    imageStyle: "scene",
     accent: "#C9B79B",
     status: "coming-soon",
     benefits: [
