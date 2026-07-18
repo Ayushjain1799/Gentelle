@@ -18,7 +18,7 @@ const pillars = [
 ];
 
 const ingredients = [
-  { name: "24K Gold", role: "Radiance & luminosity" },
+  { name: "Gold Powder", role: "Radiance & luminosity" },
   { name: "Hyaluronic Acid", role: "Deep, lasting hydration" },
   { name: "Niacinamide", role: "Clarity & even tone" },
   { name: "Ceramides", role: "Barrier repair" },
@@ -131,7 +131,7 @@ export default function Home() {
                 }}
               >
                 <p style={{ fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "var(--color-gold)" }}>Best Seller</p>
-                <p className="font-serif" style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--color-ink)" }}>Gold Face Wash · ₹399</p>
+                <p className="font-serif" style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--color-ink)" }}>Gold Glow Face Wash · ₹399</p>
               </div>
             </div>
           </div>

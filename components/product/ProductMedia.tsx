@@ -20,6 +20,22 @@ export default function ProductMedia({
   className?: string;
   rounded?: string;
 }) {
+  if (product.imageStyle === "scene") {
+    return (
+      <div className={`relative overflow-hidden ${rounded} ${className}`}>
+        <Image
+          src={product.image}
+          alt={`${product.name} — ${product.tagline}`}
+          width={840}
+          height={840}
+          priority={priority}
+          sizes={sizes}
+          className="h-auto w-full object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={`relative overflow-hidden ${rounded} ${className}`}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductMedia from "@/components/product/ProductMedia";
@@ -77,7 +78,25 @@ export default async function ProductDetailPage({ params }: Props) {
         </nav>
 
         <div className="grid items-start gap-12 md:grid-cols-2">
-          <ProductMedia product={product} priority sizes="(max-width: 768px) 90vw, 45vw" />
+          <div>
+            <ProductMedia product={product} priority sizes="(max-width: 768px) 90vw, 45vw" />
+            {product.gallery && product.gallery.length > 1 && (
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                {product.gallery.slice(1).map((src) => (
+                  <div key={src} className="aspect-square overflow-hidden rounded-2xl border border-line bg-surface">
+                    <Image
+                      src={src}
+                      alt={`${product.name} — additional view`}
+                      width={420}
+                      height={420}
+                      sizes="(max-width: 768px) 30vw, 15vw"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
           <div>
             <p className="eyebrow">{product.tagline}</p>
