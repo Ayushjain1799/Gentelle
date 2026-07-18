@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import NewsletterForm from "@/components/NewsletterForm";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 import { siteConfig, instagramUrl, whatsappUrl } from "@/lib/config";
@@ -41,7 +42,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <p className="font-serif text-2xl font-semibold tracking-[0.3em]" style={{ color: "var(--color-gold-light)" }}>
-              GENTELLE
+              <Logo />
             </p>
             <p className="mt-5 max-w-xs text-sm leading-7" style={{ color: "rgba(255,255,255,0.5)" }}>
               Premium skincare crafted with clean science, timeless elegance, and a deep respect

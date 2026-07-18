@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import CartButton from "@/components/cart/CartButton";
+import Logo from "@/components/Logo";
 import { InstagramIcon } from "@/components/icons";
 import { instagramUrl } from "@/lib/config";
 
@@ -60,7 +61,7 @@ export default function Navbar() {
             href="/"
             className="font-serif text-lg font-semibold tracking-[0.3em] text-brand md:text-xl"
           >
-            GENTELLE
+            <Logo />
           </Link>
 
           {/* Desktop nav */}
