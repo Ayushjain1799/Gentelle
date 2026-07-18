@@ -59,7 +59,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="font-serif text-lg font-semibold tracking-[0.3em] text-brand md:text-xl"
+            className="font-serif text-2xl font-semibold md:text-3xl"
           >
             <Logo />
           </Link>
