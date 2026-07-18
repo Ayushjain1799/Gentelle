@@ -10,10 +10,10 @@
   --spacing: 0.25rem;
 
   /* Surfaces */
-  --color-canvas: #FAF8F4;
+  --color-canvas: #FBF7EE;
   --color-surface: #FFFFFF;
-  --color-sand: #F0EAE0;
-  --color-sand-deep: #E6DDD0;
+  --color-sand: #F4ECDB;
+  --color-sand-deep: #EBDFC8;
 
   /* Brand greens */
   --color-brand: #2A4335;
@@ -36,8 +36,8 @@
   --color-faint: #98938A;
 
   /* Lines */
-  --color-line: #E5DDD0;
-  --color-line-soft: #EDE6DA;
+  --color-line: #E8DDC7;
+  --color-line-soft: #F0E7D5;
 
   /* Feedback */
   --color-success: #3B7550;
