@@ -41,7 +41,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
-            <p className="font-serif text-2xl font-semibold tracking-[0.3em]" style={{ color: "var(--color-gold-light)" }}>
+            <p className="font-serif text-3xl font-semibold">
               <Logo />
             </p>
             <p className="mt-5 max-w-xs text-sm leading-7" style={{ color: "rgba(255,255,255,0.5)" }}>
