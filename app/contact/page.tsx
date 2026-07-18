@@ -22,8 +22,8 @@ export default function ContactPage() {
     },
     {
       title: "Email",
-      detail: "support@gentelleskincare.com",
-      href: "mailto:support@gentelleskincare.com",
+      detail: "gentelleskincare@gmail.com",
+      href: "mailto:gentelleskincare@gmail.com",
       cta: "Send Email",
       Icon: WhatsAppIcon,
       external: false,

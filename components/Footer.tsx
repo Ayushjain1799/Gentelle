@@ -81,10 +81,10 @@ export default function Footer() {
             <ul className="space-y-3 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
               <li>
                 <a
-                  href={`mailto:support@gentelleskincare.com`}
+                  href={`mailto:gentelleskincare@gmail.com`}
                   className="transition-colors hover:text-white"
                 >
-                  support@gentelleskincare.com
+                  gentelleskincare@gmail.com
                 </a>
               </li>
               <li>
