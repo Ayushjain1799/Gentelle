@@ -19,6 +19,10 @@ export type Product = {
   /** Price in paise for Razorpay (₹399 → 39900). null when not for sale. */
   priceInPaise: number | null;
   image: string;
+  /** Extra detail-page shots (lifestyle, infographic). */
+  gallery?: string[];
+  /** "scene" = photo with its own background, rendered full-bleed. Default "packshot". */
+  imageStyle?: "packshot" | "scene";
   /** Accent color used for the product's framing gradient. */
   accent: string;
   badge?: string;
@@ -39,7 +43,13 @@ export const products: Product[] = [
       "A radiance-boosting daily cleanser powered by Gold Powder, Niacinamide, Hyaluronic Acid and Vitamin-C. It deep-cleanses away pollution, oil and impurities while brightening skin and boosting its natural glow — 100% vegan, cruelty-free, dermatologically tested and suitable for all skin types.",
     priceLabel: "₹399",
     priceInPaise: 39900,
-    image: "/products/gold.png",
+    image: "/products/gold-glow-styled.png",
+    imageStyle: "scene",
+    gallery: [
+      "/products/gold-glow-styled.png",
+      "/products/gold-glow-bottle.jpeg",
+      "/products/gold-glow-infographic.png",
+    ],
     accent: "#C8A968",
     badge: "Best Seller",
     status: "available",
